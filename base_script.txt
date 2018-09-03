@@ -13,7 +13,7 @@ mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 
 echo -e REPLACE_NginxConfB64 | base64 --decode > /etc/nginx/nginx.conf
 
-echo -e REPLACE_ServerConfB64 | base64 --decode > /etc/nginx/sites-available/default.conf
+echo -e REPLACE_DefaultServerConfB64 | base64 --decode > /etc/nginx/sites-available/default.conf
 
 ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
