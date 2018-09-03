@@ -3,8 +3,10 @@
 # default install
 yum update -y
 amazon-linux-extras install emacs nginx1.12 -y
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
+yum install python2-certbot-nginx -y
 
-# tweak
+# tweak nginx
 mkdir -p /etc/nginx/sites-available
 mkdir -p /etc/nginx/sites-enabled
 mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
