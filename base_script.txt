@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# default install
+yum update -y
+amazon-linux-extras install emacs nginx1.12 -y
+
+# tweak
+mkdir -p /etc/nginx/sites-available
+mkdir -p /etc/nginx/sites-enabled
+mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+
+echo -e REPLACE_NginxConfB64 | base64 --decode > /etc/nginx/nginx.conf
+
+echo -e REPLACE_ServerConfB64 | base64 --decode > /etc/nginx/sites-available/default.conf
+
+ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
+
+systemctl start nginx
+systemctl enable nginx
