@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # default install
+echo -e "\nLANG=en_US.utf-8\nLC_ALL=en_US.utf-8\n" >> /etc/environment
 yum update -y
 amazon-linux-extras install emacs nginx1.12 -y
 yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
