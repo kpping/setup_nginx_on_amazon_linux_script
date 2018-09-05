@@ -18,9 +18,7 @@ echo -e REPLACE_DefaultServerConfB64 | base64 --decode > /etc/nginx/sites-availa
 
 ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
-sed -i.bak -e "s/create 0644 nginx nginx/create 0644 ec2-user ec2-user/g" /etc/logrotate.d/nginx
-
-chown -R ec2-user:ec2-user /var/log/nginx
+setfacl -m 'u:nginx:--x' /home/ec2-user
 
 systemctl start nginx
 systemctl enable nginx
