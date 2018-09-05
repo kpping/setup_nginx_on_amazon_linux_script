@@ -18,5 +18,9 @@ echo -e c2VydmVyIHsKICAgIGxpc3RlbiAgICAgICA4MCBkZWZhdWx0X3NlcnZlcjsKICAgIGxpc3Rl
 
 ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
+sed -i.bak -e "s/create 0644 nginx nginx/create 0644 ec2-user ec2-user/g" /etc/logrotate.d/nginx
+
+chown -R ec2-user:ec2-user /var/log/nginx
+
 systemctl start nginx
 systemctl enable nginx
